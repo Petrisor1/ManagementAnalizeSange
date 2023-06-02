@@ -10,9 +10,9 @@ import logo from "../../Images/Logo.png";
 import {RiLogoutBoxFill} from 'react-icons/ri';
 //import componente style din alt fisier
 import {SidebarLink} from "./SubMenu";
-
+import { variabila}  from '../../Pages/Login/Login';
 import {SidebarLabelBtn} from "./SubMenu";
-
+import { SidebarData } from './SidebarData';
 
 const breakpoint = "768px";
 const Logo = styled.img`
@@ -174,6 +174,22 @@ const logOut=()=>{
   localStorage.removeItem('token');
   window.reload();
 }
+
+ const verifica=(variabila)=>{
+    if(variabila.length==3 ){
+      return (DataSidebarPacienti.map((item, index) => {
+        return <SubMenu item={item} key={index} />;
+      }))
+    }
+    else if(variabila.length==5){
+      return (
+        
+        SidebarData.map((item, index) => {
+          return <SubMenu item={item} key={index} />;
+        })
+      )
+    }
+  }
 const Sidebar2 = () => {
   const [subnav, setSubnav] = useState(false);
 
@@ -211,9 +227,11 @@ const Sidebar2 = () => {
         <Bara />
         <br />
         <ButtonsWrap>
-            {DataSidebarPacienti.map((item, index) => {
+            {verifica(variabila)
+            /* {DataSidebarPacienti.map((item, index) => {
               return <SubMenu item={item} key={index} />;
-            })}
+            })} */
+            }
         </ButtonsWrap>
           <br></br>
           {/* //////////// */}

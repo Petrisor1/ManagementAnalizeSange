@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import {getDocument} from 'pdfjs-dist';
 const FormContainer = styled.div`
 display: flex;
     flex-direction: column;
@@ -59,8 +59,30 @@ const AddPatient = () => {
     // Implement your form submission logic here
   };
 
+  const [text, setText] = useState('');
+
+  const extractTextFromPdf = async (pdfFile) => {
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+          const pdf = await getDocument({ data: event.target.result }).promise;
+          let extractedText = '';
+
+          for (let i = 1; i <= pdf.numPages; i++) {
+              const page = await pdf.getPage(i);
+              const content = await page.getTextContent();
+              extractedText += content.items.map(item => item.str).join(' ');
+          }
+
+          setText(extractedText);
+      };
+      reader.readAsArrayBuffer(pdfFile);
+  }
+
   const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+      const file = event.target.files[0];
+      if (file) {
+          extractTextFromPdf(file);
+      }
   };
 
   return (
@@ -134,12 +156,16 @@ const AddPatient = () => {
 <FormGroup>
 
         <FormLabel>Incarca Test  PDF (optional):</FormLabel>
-        <FormInput type="file" accept="application/pdf" onChange={handleFileChange} required />
+        {/* <FormInput type="file" accept="application/pdf" onChange={handleFileChange} required /> */}
         
 
         <FormButton type="submit">AdaugaPacient</FormButton>
         </FormGroup>
       </form>
+      <div>
+            <input type="file" accept=".pdf" onChange={handleFileChange} />
+            <p>{text}</p>
+        </div>
     </FormContainer>
   );
 };

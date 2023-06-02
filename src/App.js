@@ -55,18 +55,13 @@ width: 100%;
 
 
 
-const verifica=(variabila)=>{
-  if(variabila.length==3){
-    return <Sidebar_pacienti/>
-  }
-  else if(variabila.length==5){
-    return <Sidebar2/>
-  }
-}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////
 const App = () => {
   const {token,setToken}=useToken();
+
 
  
   if(!token){
@@ -111,10 +106,11 @@ const App = () => {
     <BrowserRouter>
       <GlobalStyle />
     {/* <Login/> */}
-    { 
+    {/* { 
     verifica(variabila)
-    }
-        {/* <Sidebar_pacienti /> */}
+    } */}
+
+        <Sidebar_pacienti />
         
         <ContentShifted>
           <Routes>   
