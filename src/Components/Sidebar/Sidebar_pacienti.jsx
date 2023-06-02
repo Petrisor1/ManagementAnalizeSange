@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import { SidebarData } from './SidebarData';
+import { DataSidebarPacienti } from './DataSidebarPacienti';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 import logo from "../../Images/Logo.png";
@@ -211,7 +211,7 @@ const Sidebar2 = () => {
         <Bara />
         <br />
         <ButtonsWrap>
-            {SidebarData.map((item, index) => {
+            {DataSidebarPacienti.map((item, index) => {
               return <SubMenu item={item} key={index} />;
             })}
         </ButtonsWrap>

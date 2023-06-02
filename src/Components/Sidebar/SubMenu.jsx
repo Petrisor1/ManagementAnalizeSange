@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const breakpoint = "768px";
-const SidebarLink = styled(Link)`
+ export  const SidebarLink = styled(Link)`
   display: flex;
   color: #e1e9fc;
   justify-content: space-between;
@@ -18,16 +18,17 @@ const SidebarLink = styled(Link)`
     background: #252831;
     border-left: 4px solid #dc143c;
     cursor: pointer;
+    
   }
 `;
 
-const SidebarLabel = styled.span`
+export const SidebarLabel = styled.span`
   margin-left: 16px;
   @media (max-width: ${breakpoint}) {
     display: true;
   }
 `;
-const SidebarLabelBtn=styled.span`
+export const SidebarLabelBtn=styled.span`
 margin-left: 16px;
 @media (max-width: ${breakpoint}) {
  
@@ -35,10 +36,10 @@ margin-left: 16px;
 }
 `
 
-const DropdownLink = styled(Link)`
+export const DropdownLink = styled(Link)`
   background: #414757;
   height: 50px;
-  width: 60%;
+  width: 78%;
   
   display: flex;
   align-items: center;
@@ -46,7 +47,7 @@ const DropdownLink = styled(Link)`
   color: #f5f5f5;
   font-size: 18px;
   overflow: false;
-  margin-left: 100px;
+  margin-left: 50px;
   &:hover {
     background: #632ce4;
     cursor: pointer;
@@ -54,6 +55,7 @@ const DropdownLink = styled(Link)`
   @media (max-width: ${breakpoint}) {
     width: 76%;
     margin-left: 60px;
+    height: 30px;
   }
 `;
 
