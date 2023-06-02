@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {getDocument} from 'pdfjs-dist';
+
+import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/build/pdf';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
+
+GlobalWorkerOptions.workerSrc = pdfjsWorker;
+
 const FormContainer = styled.div`
 display: flex;
     flex-direction: column;
@@ -62,28 +67,50 @@ const AddPatient = () => {
   const [text, setText] = useState('');
 
   const extractTextFromPdf = async (pdfFile) => {
-      const reader = new FileReader();
-      reader.onload = async (event) => {
-          const pdf = await getDocument({ data: event.target.result }).promise;
-          let extractedText = '';
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+        const pdf = await getDocument({ data: event.target.result }).promise;
+        let extractedText = '';
 
-          for (let i = 1; i <= pdf.numPages; i++) {
-              const page = await pdf.getPage(i);
-              const content = await page.getTextContent();
-              extractedText += content.items.map(item => item.str).join(' ');
-          }
+        for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            extractedText += content.items.map(item => item.str).join(' ');
+        }
 
-          setText(extractedText);
-      };
-      reader.readAsArrayBuffer(pdfFile);
+        setText(extractedText);
+        var rez= extractTextBetweenStars(extractedText);
+        for(var i=0;i<rez.length;i++) {
+          console.log("\n"+ rez[i])
+          console.log("\n");
+          console.log("\n");
+          console.log("\n");
+          console.log("\n");
+
+        }
+        //console.log('Extracted text:', extractedText);
+    };
+    reader.readAsArrayBuffer(pdfFile);
+};
+function extractTextBetweenStars(input) {
+  let splitInput = input.split('*');
+  let result = [];
+
+  for(let i = 1; i < splitInput.length; i += 2) {
+      result.push(splitInput[i]);
   }
 
+  return result;
+}
   const handleFileChange = (event) => {
-      const file = event.target.files[0];
-      if (file) {
-          extractTextFromPdf(file);
-      }
-  };
+    const file = event.target.files[0];
+    if (file) {
+        console.log('Starting to extract text...');
+        extractTextFromPdf(file);
+       
+        console.log('Finished extracting text');
+    }
+};
 
   return (
     <FormContainer>
@@ -161,11 +188,12 @@ const AddPatient = () => {
 
         <FormButton type="submit">AdaugaPacient</FormButton>
         </FormGroup>
-      </form>
-      <div>
+        <div>
             <input type="file" accept=".pdf" onChange={handleFileChange} />
-            <p>{text}</p>
+            
         </div>
+      </form>
+      <p>{text}</p>
     </FormContainer>
   );
 };

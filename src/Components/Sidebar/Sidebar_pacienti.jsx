@@ -172,16 +172,17 @@ const SpatiuExtra = styled.div`
 
 const logOut=()=>{
   localStorage.removeItem('token');
+  localStorage.removeItem('variabila');
   window.reload();
 }
 
  const verifica=(variabila)=>{
-    if(variabila.length==3 ){
+    if('CNP'==localStorage.getItem('variabila') ){
       return (DataSidebarPacienti.map((item, index) => {
         return <SubMenu item={item} key={index} />;
       }))
     }
-    else if(variabila.length==5){
+    else if('Email'==localStorage.getItem('variabila')){
       return (
         
         SidebarData.map((item, index) => {
@@ -190,7 +191,7 @@ const logOut=()=>{
       )
     }
   }
-const Sidebar2 = () => {
+const Sidebar_pacienti = () => {
   const [subnav, setSubnav] = useState(false);
 
   const showSubnav = () => setSubnav(!subnav);
@@ -256,4 +257,4 @@ const Sidebar2 = () => {
   );
 };
 
-export default Sidebar2;
+export default Sidebar_pacienti;

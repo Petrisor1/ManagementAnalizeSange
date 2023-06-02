@@ -212,6 +212,7 @@ const Login = ({setToken}) => {
       
       const token = await handleLogin({ CNP, parola });
       variabila="CNP";
+      localStorage.setItem('variabila','CNP')
       if (token) {
         setToken(token);
       } else {
@@ -223,6 +224,7 @@ const Login = ({setToken}) => {
       event.preventDefault();
       const token = await handleLogin_laborator({ email, parola });
       variabila="Email";
+      localStorage.setItem('variabila','Email')
       console.log(token);
       if (token) {
         setToken(token);
