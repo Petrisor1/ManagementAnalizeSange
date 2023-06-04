@@ -93,8 +93,39 @@ color: ${props => props.pressed ? 'white' : 'black'};
 border: 0px;
 font-family: Georgia;
 `
+const reqEmailNumepacient=async(data)=>{
+  try {
+    console.log(data);
+    const response = await axios.post('http://localhost:3000/pacienti/iaByCNP',data, {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+    
+    });
 
+     localStorage.setItem('email',`${response.data.email}`);
+     localStorage.setItem('nume',`${response.data.prenume}`);
+  } catch (error) {
+    console.log('There was an error!', error);
+    return null;
+  }
+}
+const reqEmailNume=async(data)=>{
+  try {
+    const response = await axios.post('http://localhost:3000/laboratoare/getEmailNume',data,  {
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+    
+    });
 
+     localStorage.setItem('email',`${response.data.email}`);
+     localStorage.setItem('nume',`${response.data.nume_laborator}`);
+  } catch (error) {
+    console.log('There was an error!', error);
+    return null;
+  }
+}
 const handleLogin = async (data) => {
   try {
     const response = await axios.post('http://localhost:3000/login/auth', data, {
@@ -211,8 +242,10 @@ const Login = ({setToken}) => {
       event.preventDefault();
       
       const token = await handleLogin({ CNP, parola });
+      
       variabila="CNP";
       localStorage.setItem('variabila','CNP')
+      reqEmailNumepacient({CNP});
       if (token) {
         setToken(token);
       } else {
@@ -223,8 +256,10 @@ const Login = ({setToken}) => {
     {
       event.preventDefault();
       const token = await handleLogin_laborator({ email, parola });
+      
       variabila="Email";
       localStorage.setItem('variabila','Email')
+      reqEmailNume({email});
       console.log(token);
       if (token) {
         setToken(token);
