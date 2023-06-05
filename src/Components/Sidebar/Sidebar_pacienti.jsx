@@ -13,7 +13,7 @@ import {SidebarLink} from "./SubMenu";
 import { variabila}  from '../../Pages/Login/Login';
 import {SidebarLabelBtn} from "./SubMenu";
 import { SidebarData } from './SidebarData';
-
+import {RiUser3Fill} from 'react-icons/ri';
 const breakpoint = "768px";
 const Logo = styled.img`
   width: 150px;
@@ -148,7 +148,7 @@ const Overlay = styled.div`
   display: ${({ overlay }) => (overlay ? 'none' : 'block')};
 `;
 const LogOutBtn = styled(Link)`
-  width: 83%;
+  width: 100%;
   display: flex;
   color: #e1e9fc;
   justify-content: space-between;
@@ -169,10 +169,33 @@ const SpatiuExtra = styled.div`
   height: 1000px;
   width: 100%;
 `;
+const Wrap= styled.div`
+display: flex;
+color: white;
+justify-content: center;
+align-tems: center;
+`
 
+
+const Patrat=styled.div`
+
+
+display: flex;
+width: 100%;
+height: auto;
+margin:0;
+margin-top: 15px;
+margin-bottom: 20px;
+padding: 0px;
+justify-content: center;
+align-items: center;
+
+`
 const logOut=()=>{
   localStorage.removeItem('token');
   localStorage.removeItem('variabila');
+  localStorage.removeItem('nume');
+  localStorage.removeItem('email');
   window.reload();
 }
 
@@ -236,14 +259,24 @@ const Sidebar_pacienti = () => {
         </ButtonsWrap>
           <br></br>
           {/* //////////// */}
-
-
-        
+          <Bara></Bara>
+            <Patrat>
+            <Wrap>
+           <RiUser3Fill color='#c1c0b9' size={60}/>
+           
+            <div style={{marginLeft:'15px'}}>
+              <span style={{font: 'bold',fontSize: '20px'}}>{localStorage.getItem('nume')} </span>
+              <span style={{color:'#e7e6e1'}}> {localStorage.getItem('email')}</span>
+              
+            </div>
+            </Wrap>
+            </Patrat>
+            
           <LogOutBtn onClick={()=>logOut() }>
-            <div>
+            <Wrap>
             <RiLogoutBoxFill/>
             <SidebarLabelBtn>Deconectare</SidebarLabelBtn>
-            </div>
+            </Wrap>
           </LogOutBtn>
           
           <SpatiuExtra/>

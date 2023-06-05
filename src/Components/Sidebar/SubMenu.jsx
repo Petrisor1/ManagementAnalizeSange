@@ -8,9 +8,10 @@ const breakpoint = "768px";
   color: #e1e9fc;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
   padding: 20px;
   list-style: none;
-  height: 30px;
+  height: 60px;
   text-decoration: none;
   font-size: 18px;
 
@@ -35,7 +36,9 @@ margin-left: 16px;
   
 }
 `
-
+const Wrap=styled.div`
+display: flex;
+`
 export const DropdownLink = styled(Link)`
   background: #414757;
   height: 50px;
@@ -67,10 +70,10 @@ const SubMenu = ({ item }) => {
   return (
     <>
       <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
-        <div>
+        <Wrap>
           {item.icon}
           <SidebarLabelBtn>{item.title}</SidebarLabelBtn>
-        </div>
+        </Wrap>
         <div>
           {item.subNav && subnav
             ? item.iconOpened

@@ -4,7 +4,7 @@ import logo from '../../Images/Logo_Login.png'; // Import your logo image here
 import backgroundImg from '../../Images/blood.jpg'; // Import your background image here
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
+import { Input,InputGroup,InputRightElement } from '@chakra-ui/react';
 
 const LoginPageContainer = styled.div`
   display: flex;
@@ -160,6 +160,8 @@ const handleLogin_laborator=async (data) => {
 var variabila='';
 const Login = ({setToken}) => {
   const renderSmth=(id)=>{
+    
+
     switch(id){
       case 'CNP': return (<form onSubmit={handleSubmit}>
         <FormGroup>
@@ -174,12 +176,13 @@ const Login = ({setToken}) => {
         <FormGroup>
           <FormLabel>Parola</FormLabel>
           <FormInput
-            type="parola"
+            type="password"
             value={parola}
             onChange={(e) => setParola(e.target.value)}
             placeholder="Parola"
             required
           />
+      
         </FormGroup>
         <LoginButton type="submit" >Login</LoginButton>
       </form>)
@@ -196,7 +199,7 @@ const Login = ({setToken}) => {
         <FormGroup>
           <FormLabel>Parola</FormLabel>
           <FormInput
-            type="parola"
+            type="password"
             value={parola}
             onChange={(e) => setParola(e.target.value)}
             placeholder="Parola"
