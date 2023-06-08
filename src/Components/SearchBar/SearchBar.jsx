@@ -70,8 +70,8 @@ const SearchBar = ({ onSearch }) => {
         />
         <FilterSelector value={filter} onChange={(e) => setFilter(e.target.value)}>
           <option value="all">Cauta dupa</option>
-          <option value="filter1">Filter 1</option>
-          <option value="filter2">Filter 2</option>
+          <option value="filter1">CNP</option>
+          <option value="filter2">Nume </option>
           {/* Add more filter options as needed */}
         </FilterSelector>
         <NavItem onClick={handleSearch}>Search</NavItem>
