@@ -3,7 +3,7 @@ import axios from "axios";
 import { Select } from "@chakra-ui/react";
 import {useState, useEffect} from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-
+import genereazaRecomandari from "./recomandari.js";
 
 const TesteNegative=()=>{
     let CNP=localStorage.getItem('CNP');
@@ -31,6 +31,16 @@ const TesteNegative=()=>{
         }
     }, [selectedDate]);
 
+    const preluareRecomandari = () => {
+        return rezultate.map(rez => {
+          return (
+            <div key={rez.nume_test}>
+              <div>{rez.nume_test}</div>
+              <p>{genereazaRecomandari(rez)}</p>
+            </div>
+          );
+        });
+      };
     return (
         <div>
         <Select placeholder="Selectează data" onChange={(e) => setSelectedDate(e.target.value)}>
@@ -63,6 +73,7 @@ const TesteNegative=()=>{
           </Tbody>
         </Table>
       )}
+      {preluareRecomandari()}
       </div>
     );
 }

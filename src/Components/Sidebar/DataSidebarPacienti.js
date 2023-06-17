@@ -21,7 +21,7 @@ export const DataSidebarPacienti = [
 
     subNav: [
       {
-        title: 'Evolutie analize',
+        title: 'Rezultate negative',
         path: '/analize/evolutie',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
