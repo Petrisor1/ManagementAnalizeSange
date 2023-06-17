@@ -13,6 +13,9 @@ import {Login,variabila} from './Pages/Login/Login.jsx'
 import { createGlobalStyle } from 'styled-components';
 import useToken from './Pages/Login/useToken.js';
 import { ChakraProvider } from "@chakra-ui/react";
+import RezultatePacient from './Pages/Pacienti/RezultatePacient.jsx';
+import EvolutieAnalize from './Pages/Analize/EvolutieAnalize.jsx';
+import TesteNegative from './Pages/Analize/TesteNegative.jsx';
 const GlobalStyle = createGlobalStyle`
   body::-webkit-scrollbar {
     width: 10px;
@@ -121,7 +124,9 @@ const App = () => {
            <Route path="/pacienti/adaugaPacient" element={<AdaugaPacient/>}/>
             {/* <Route path="/patients" component={Patients} />
             <Route path="/medications" component={Medications} /> */}
-            
+            <Route path='/pacienti/rezultatePacient' element={<RezultatePacient/>} />
+            <Route path='/statistici/evolutie' element={<EvolutieAnalize/>}/>
+            <Route path='/analize/evolutie' element={<TesteNegative/>}/>
           </Routes>
          
           </ContentShifted>

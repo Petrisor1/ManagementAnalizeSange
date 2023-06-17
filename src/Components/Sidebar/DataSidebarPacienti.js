@@ -14,7 +14,7 @@ export const DataSidebarPacienti = [
   },
   {
     title: 'Vezi alalizele',
-    path: '/alalize',
+    path: '/pacienti/rezultatePacient',
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

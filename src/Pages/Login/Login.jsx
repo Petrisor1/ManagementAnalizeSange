@@ -250,6 +250,7 @@ const Login = ({setToken}) => {
       localStorage.setItem('variabila','CNP')
       reqEmailNumepacient({CNP});
       if (token) {
+        localStorage.setItem('CNP',CNP);
         setToken(token);
       } else {
         console.log("Failed to login");

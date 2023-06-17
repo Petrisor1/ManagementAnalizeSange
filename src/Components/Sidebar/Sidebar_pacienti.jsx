@@ -196,7 +196,7 @@ const logOut=()=>{
   localStorage.removeItem('variabila');
   localStorage.removeItem('nume');
   localStorage.removeItem('email');
-  window.reload();
+  window.location.reload();
 }
 
  const verifica=(variabila)=>{
