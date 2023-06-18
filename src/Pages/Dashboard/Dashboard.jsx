@@ -9,17 +9,51 @@ const DashboardContainer = styled.div`
   flex-grow: 1;
   backgrou;
 `;
-
+const WrapParinte=styled.div`
+  width: 100%;
+  height: 25%;
+  paddign: 50px;
+  paddign-top: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+const WrapCopil=styled.div`
+  width: 100%;
+  height: 25%;
+  margin: 50px;
+  margin-top: 0px;
+`
 const Dashboard = () => {
   return (
     <DashboardContainer>
-    <h1>Dashboard</h1>
-     <Grafic/>
+    <WrapParinte>
+      <WrapCopil>
+        <h1>Dashboard</h1>
+        <Grafic/>
+      </WrapCopil>
+      <WrapCopil>
+        <h1>Dashboard</h1>
+        <Grafic/>
+      </WrapCopil>
+      <WrapCopil>
+        <h1>Dashboard</h1>
+        <Grafic/>
+      </WrapCopil>
+      <WrapCopil>
+        <h1>Dashboard</h1>
+        <Grafic/>
+      </WrapCopil>
+     </WrapParinte>
+     <WrapParinte>
+     <div style={{width: '60%', display: '',alignContent:'center',border:'2px black solid'}}>
      <AspectRatio ratio={4 / 2}>
-  <iframe
-    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng'
-  />
-</AspectRatio>
+    <iframe
+      src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng'
+    />
+  </AspectRatio>
+    </div>
+    </WrapParinte>
     </DashboardContainer>
   );
 };

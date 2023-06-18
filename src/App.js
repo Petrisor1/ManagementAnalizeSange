@@ -16,6 +16,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import RezultatePacient from './Pages/Pacienti/RezultatePacient.jsx';
 import EvolutieAnalize from './Pages/Analize/EvolutieAnalize.jsx';
 import TesteNegative from './Pages/Analize/TesteNegative.jsx';
+import Statistici from './Pages/Analize/Statistici.jsx';
+
 const GlobalStyle = createGlobalStyle`
   body::-webkit-scrollbar {
     width: 10px;
@@ -127,6 +129,7 @@ const App = () => {
             <Route path='/pacienti/rezultatePacient' element={<RezultatePacient/>} />
             <Route path='/statistici/evolutie' element={<EvolutieAnalize/>}/>
             <Route path='/analize/evolutie' element={<TesteNegative/>}/>
+            <Route path='/statistici' element={<Statistici/>}/>
           </Routes>
          
           </ContentShifted>

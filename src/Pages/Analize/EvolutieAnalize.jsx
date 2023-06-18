@@ -165,7 +165,7 @@ const EvolutieAnalize=()=>{
                     },
                     title: {
                         display: true,
-                        text: 'Chart.js Bar Chart',
+                        text: 'Evolutia totală a testelor',
                     },
                 },
             },
@@ -179,7 +179,7 @@ const EvolutieAnalize=()=>{
 
     return(
         <div >
-        <p>HEY</p>
+        <p>Evoluția valorilor testelor </p>
         <canvas ref={vaerticalBarChart}> </canvas>
         </div>
     )
