@@ -74,20 +74,21 @@ const Grafic = () => {
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: auto;
+  height: 100%;
+  padding: 20px;
   `
   return (
   
     <>
     <Wrap>
-      <h2>Blood Pressure per Client</h2>
+      
       <canvas ref={barChartRef}></canvas>
       
       {/* <h2>Overall Health Distribution</h2>
       <canvas ref={doughnutChartRef}></canvas>
      */}
-      <h2>Average Cholesterol Over Time</h2>
-      <canvas ref={lineChartRef}></canvas>
+{/*     
+      <canvas ref={lineChartRef}></canvas> */}
       </Wrap>
     </>
   );

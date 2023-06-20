@@ -24,6 +24,17 @@ import {
 import styles from "styled-components";
 import { Box } from "@chakra-ui/react";
 
+const Titlu=styles.p`
+width: 100%;
+font-size: 30px;
+font-style: bold;
+color:  #385170; 
+`
+const Paragraf=styles.p`
+width: 100%; 
+font-size: 25px;
+`
+
 const Wrapper = styles.div`
 width: 90%;
 
@@ -335,8 +346,10 @@ const vsh=[];
  }
   return (
     <Wrapper>
-      {/* <SearchBar onSearch={handleSearch} /> */}
-     
+      <Titlu>Analizele medicale</Titlu>
+     <br/>
+      <Paragraf>Efectuați click pe una dintre analize pentru a vizualiza rezultatele analizelor</Paragraf>
+      <br/>
       <ChakraProvider>
         <TableContainer>
           <Table size="md">
@@ -385,35 +398,6 @@ const vsh=[];
             <ModalCloseButton />
             <ModalBody>
               <TableContainer>
-                
-                {/* <Table>
-                  <Thead>
-                    <Tr>
-                      <Th>Nume test</Th>
-                      <Th>Valoare rezultat</Th>
-                      <Th>Interval de referință</Th>
-                      <Th>Descriere test</Th>
-                      <Th>Unitate de măsură</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {dataPacient.map((row) => (
-                      <Tr key={row.nume_test}>
-                        <Td>{row.nume_test}</Td>
-                        <Td>{row.valoare_rezultat}</Td>
-                        <Td>
-                          {"[" +
-                            row.valoare_minima +
-                            " - " +
-                            row.valoare_maxima +
-                            "]"}
-                        </Td>
-                        <Td>{row.descriere_test}</Td>
-                        <Td>{row.unitate}</Td>
-                      </Tr>
-                    ))}
-                  </Tbody>
-                </Table> */}
                 {tipuriTeste()}
                { formatAnalize()}
               </TableContainer>

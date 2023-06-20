@@ -14,6 +14,16 @@ height: 50%;
 display: flex;
 flow-direction: row;
 `
+const Titlu=styled.p`
+width: 100%;
+font-size: 30px;
+font-style: bold;
+color:  #385170; 
+`
+const Paragraf=styled.p`
+width: 100%; 
+font-size: 25px;
+`
 const ContinerParinte=styled.div`
 width: 100%;
 padding: 50px; 
@@ -319,8 +329,21 @@ const Statistici =()=>{
 
     return(
         <ContinerParinte>
-        <Continer>
-            <div>Selecteaza tipul de test caruia vrei sa ii vezi evolutia in timp</div>
+            <Titlu>
+                STATISTICI
+            </Titlu>
+            <br></br>
+            <Paragraf> 
+                Unele afecțiuni pot provoca schimbări în valorile analizelor medicale înainte ca pacientul să prezinte simptome. Prin urmare, monitorizarea regulată a acestor valori poate ajuta la detectarea precoce a unei probleme de sănătate.
+                </Paragraf>
+                <br/>
+                <hr></hr>
+                <br/>
+       
+            <Continer>
+            <div>Selectează un tip de test pentru a vedea evoluția acestuia</div>
+            </Continer>
+            <Continer>
             <Select placeholder="Selectează tipul de test" onChange={(e) => setTipTest(e.target.value)}>
             {Array.isArray(date) && date.map((date, index) => (
             <option key={index} value={date.tip_nume}>
@@ -330,11 +353,11 @@ const Statistici =()=>{
             </Select>
             </Continer>
             <Continer>
-            <canvas ref={chartRef} /> {/* Elementul canvas unde este desenat chart-ul */}
+            <canvas ref={chartRef} /> 
             <canvas ref={chartInstanceRef} />
             </Continer>
             <Continer>
-            <canvas ref={chartRef2} /> {/* Elementul canvas unde este desenat chart-ul */}
+            <canvas ref={chartRef2} /> 
             <canvas ref={chartRef3} />
             </Continer>
         </ContinerParinte>
