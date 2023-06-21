@@ -42,24 +42,10 @@ export const DataSidebarPacienti = [
           title: 'Evolutie teste',
           path: '/statistici/evolutie',
           icon: <IoIcons.IoIosPaper />
-        },
-        {
-          title: 'Media valorilor',
-          path: '/statistici/medie',
-          icon: <IoIcons.IoIosPaper />
         }
       ]
   },
   
-  {
-    title: 'Support',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />
-  },
+  
 
-  {
-    title: 'Setări',
-    path: '/setari',
-    icon:<VscSettingsGear />
-  }
 ];

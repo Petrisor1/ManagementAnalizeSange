@@ -95,3 +95,5 @@ const Grafic = () => {
 };
 
 export default Grafic;
+
+

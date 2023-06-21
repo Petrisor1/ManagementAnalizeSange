@@ -112,7 +112,7 @@ const SidebarWrap = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 3%;
+  gap: 20%;
   padding-bottom: 800px;
   @media (max-width: ${breakpoint}) {
   gap: 0%;
@@ -259,7 +259,9 @@ const Sidebar_pacienti = () => {
         </ButtonsWrap>
           <br></br>
           {/* //////////// */}
+          
           <Bara></Bara>
+
             <Patrat>
             <Wrap>
            <RiUser3Fill color='#c1c0b9' size={60}/>

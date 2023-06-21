@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
-    background-color: lightblue;
+
   }
 `;
 const breakpoint = "768px";
