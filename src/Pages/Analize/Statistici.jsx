@@ -330,7 +330,7 @@ const Statistici =()=>{
     return(
         <ContinerParinte>
             <Titlu>
-                STATISTICI
+                Statistici
             </Titlu>
             <br></br>
             <Paragraf> 

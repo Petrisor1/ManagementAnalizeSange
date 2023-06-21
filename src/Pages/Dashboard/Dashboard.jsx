@@ -11,6 +11,7 @@ const breakpoint = "768px";
 
 const DashboardContainer = styled.div`
   padding: 20px;
+  padding-top: 0px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -37,7 +38,7 @@ const WrapParinte2=styled.div`
   paddign-top: 0px;
   display: flex;
   
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   @media (max-width: ${breakpoint}) {
     flex-direction: column;
@@ -79,7 +80,7 @@ padding-bottom: 40px;
 const Wrap=styled.div`
 
 height: 100%;
-width: 50%;
+width: 100%;
 @media (max-width: ${breakpoint}) {
   
   width: 100%;
@@ -87,7 +88,18 @@ width: 50%;
 }
 
 `
+const Wrap2=styled.div`
 
+height: 50%;
+width: 70%;
+
+@media (max-width: ${breakpoint}) {
+  
+  width: 100%;
+ 
+}
+
+`
 
 // const BarChart = (lb,ks) => {
 //   const data = {
@@ -128,6 +140,9 @@ const Dashboard = () => {
   const [medieR,setMedieR]=useState([]);
   const [lbls, setLbls] = useState([]);
   const [date, setDate] = useState([]);
+  
+  const [analize,setAnalize] = useState([]);
+  let [dateAnalize,setDateAnalize] = useState([]);
   const totPacienti=async()=>{
     await axios.get('http://localhost:3000/pacienti/totPacienti')
     .then(resp=> setNrPacienti(resp.data[0].totPacienti)).catch(err=> console.log(err));
@@ -139,28 +154,36 @@ const Dashboard = () => {
   const medieAnalize=async()=>{
     await axios.get('http://localhost:3000/pacienti/medieRezultate')
     .then(resp=> { 
-      setMedieR(resp.data)
-      
-      medieR.map(r=>{
+      setMedieR(resp.data);
         const labels = resp.data.map(r => r.nume_test);
         const data = resp.data.map(r => r.medie);
         setLbls(labels);
         setDate(data);
-        console.log(lbls);
-        console.log(date);
-      })
-     
     }
-      
 
-    
     ).catch(err=> console.log(err));
+  }
+  const analizeFrecvente=async()=>{
+    const labels=[];
+    const data=[];
+        await axios.get('http://localhost:3000/pacienti/analizeFrecvente')
+        .then(resp=>{
+          for(let key in resp.data)
+          {
+            let first_elem= resp.data[key][0][0];
+            labels.push(first_elem.tip_nume);
+            data.push(first_elem.valoare);
+          }
+         setAnalize(labels);
+         setDateAnalize(data);
+        })
   }
 
   useEffect(()=>{
     totPacienti();
     totAnalize();
     medieAnalize();
+    analizeFrecvente();
   },[])
 
   const data = {
@@ -168,7 +191,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: 'Numărul de pacienți',
-        data: [1,2, 3, 6,9, 10, 15, parseInt({nrPacienti})],
+        data: [1,2, 3, 6,9, 10,  parseInt({nrPacienti})],
         fill: false,
         backgroundColor: 'rgb(75, 192, 192)',
         borderColor: 'rgba(75, 192, 192, 0.2)',
@@ -187,18 +210,41 @@ const Dashboard = () => {
       },
     ],
   };
+  const data1 = {
+    labels: analize,
+    datasets: [
+      {
+        label: 'Analize frecvente',
+        data: dateAnalize,
+        fill: false,
+        backgroundColor: 'rgb(75, 192, 192)',
+        borderColor: 'rgba(75, 192, 192, 0.2)',
+      },
+    ],
+  };
 
   const data3 = {
     labels: lbls,
     datasets: [
       {
-        label: 'Numărul de analize',
+        label: 'Medie rezultate',
         data: date,
         fill: false,
         backgroundColor: 'rgb(75, 192, 192)',
         borderColor: 'rgba(75, 192, 192, 0.2)',
       },
     ],
+    options: {
+      scales: {
+        x: {
+          ticks: {
+            autoSkip: true,
+            maxRotation: 90,
+            minRotation: 90
+          }
+        }
+      }
+    }
   };
   const options = {
     responsive: true,
@@ -209,7 +255,24 @@ const Dashboard = () => {
       }
     } 
   };
-  
+  const options2 = {
+    responsive: true,
+    maintainAspectRatio: true,
+    scales: {
+      x: {
+        ticks: {
+          autoSkip: true,
+          maxRotation: 90,
+          minRotation: 90
+        }
+      },
+      y: {
+        beginAtZero: true
+      }
+    } 
+  };
+
+
   
   const LineChart = () => (
     <div style={{ height: "100%" }}>
@@ -222,9 +285,14 @@ const Dashboard = () => {
     </div>
   )
 
-  const LineChart3 = () => (
+  const LineChart3 =  () => (
     <div style={{ height: "100%" }}>
-      <Bar data={data3} options={options} />
+      <Bar data={data3} options={options2} />
+    </div>
+  );
+  const LineChart1 =  () => (
+    <div style={{ height: "100%" }}>
+      <Bar data={data1} options={options} />
     </div>
   );
  
@@ -258,13 +326,13 @@ const Dashboard = () => {
       </WrapCopil>
       
       <WrapCopil>
-        <TitluCard>Dashboard</TitluCard>
+        <TitluCard>Analize Frecvente</TitluCard>
         <WrapGeneral>
           <CentruCard>
-            {nrAnalize}
+           <div style={{color:'#e4f1fe'}}>{nrAnalize}</div> 
           </CentruCard>
         </WrapGeneral>
-        <LinieChart/>
+        <LineChart1/>
       </WrapCopil>
      </WrapParinte>
       <WrapParinte2>
@@ -275,12 +343,13 @@ const Dashboard = () => {
         <LineChart3/>
      
         </Wrap>
-      <Wrap >
-        <p>Ne poti gasi in urmatoarea locatie:</p>
+        <br/>
+      <Wrap2 >
+        <Titlu>Ne poți găsi in următoarea locație:</Titlu>
      <AspectRatio ratio={4 / 2}>
      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2688.2273867474723!2d26.242391060415684!3d47.64114797196079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4734fc2c901e307d%3A0x805d8c8e5187360a!2sUniversitatea%20%E2%80%9E%C8%98tefan%20cel%20Mare%E2%80%9D%20din%20Suceava!5e0!3m2!1sro!2sro!4v1687300546582!5m2!1sro!2sro" style={{width:'600', height:'450', allowfullscreen:"", loading:"lazy", referrerpolicy:"no-referrer-when-downgrade"}}  ></iframe>
   </AspectRatio>
-    </Wrap >
+    </Wrap2 >
       </WrapParinte2>
      <WrapParinte>
      

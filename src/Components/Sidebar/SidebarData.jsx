@@ -9,17 +9,7 @@ export const SidebarData = [
     title: 'General',
     path: '/',
     icon: <AiIcons.AiFillHome />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Info pacienti',
-        path: '/general/pacienti',
-        icon: <IoIcons.IoIosPaper />
-      },
-     
-    ]
+    
   },
   {
     title: 'Pacienti',
