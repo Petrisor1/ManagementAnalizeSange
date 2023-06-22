@@ -11,6 +11,7 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { ChakraProvider } from "@chakra-ui/react";
+import styled from 'styled-components';
 //funcitie pentru inputuri (required)
 
   function validateRequired(value) {
@@ -21,9 +22,48 @@ import { ChakraProvider } from "@chakra-ui/react";
     return error;
   }
   ///
+ 
 let fullData="";
 
 
+const Continer=styled.div`
+width: 50%;
+height: 50%;
+display: flex;
+flow-direction: row;
+`
+const Titlu=styled.p`
+width: 100%;
+font-size: 30px;
+font-style: bold;
+color:  #385170; 
+`
+const Paragraf=styled.p`
+width: 100%; 
+font-size: 25px;
+`
+const ContinerParinte=styled.div`
+width: 100%;
+padding: 50px; 
+padding-top: 0px;
+height: 100%;
+
+
+`
+const Wrap=styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+
+`
+const WrapIntreg=styled.div`
+border-radius: 10px;
+background-color: white;
+border-bottom: 5px solid #cccccc;
+-webkit-box-shadow: 5px 5px 15px 5px #cccccc; 
+box-shadow: 5px 5px 15px 5px #cccccc;
+padding: 50px;
+`
 ////////Componenta
 const AdaugaPacient = () => {
   const [file, setFile] = useState(null);
@@ -83,9 +123,12 @@ const AdaugaPacient = () => {
    }
 
   return (
+   <ContinerParinte>
    
-    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" minH="100vh" >
+    {/* <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" minH="100vh" > */}
+      
        <ChakraProvider >
+      
    <Formik
       initialValues={{
         nume: '',
@@ -102,7 +145,12 @@ const AdaugaPacient = () => {
       }}
     >
       {(props) => (
+        <WrapIntreg>
         <Form onSubmit={onSubmit}>
+        <Titlu>Adaugă un nou pacinet</Titlu>
+   <br/>
+   <br/>
+          <Wrap>
           <Field name="nume" validate={validateRequired}>
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.nume && form.touched.nume}>
@@ -124,6 +172,7 @@ const AdaugaPacient = () => {
               </FormControl>
             )}
           </Field>
+          </Wrap>
           <Field name="gen" validate={validateRequired}>
     {({ field, form }) => (
         <FormControl isInvalid={form.errors.gen && form.touched.gen}>
@@ -183,19 +232,25 @@ const AdaugaPacient = () => {
           </Field>
         
           <FormControl >
+          <Paragraf>Alege buletinul de analize în format PDF</Paragraf>
           <Input type="file" accept=".pdf" onChange={onChange} />
-          <Button mt={4}  color="black" isLoading={props.isSubmitting} type="submit">
-            Incarca teste
-          </Button>
+         
           </FormControl>
           {/* <button type="submit">Submit</button>  */}
-         <Button mt={6} color="black" onClick={()=>adaugaRezultate(fullData)}>Adaugă pacient</Button> 
+          <Wrap>
+         
+          <Button mt={6}  color="white" background='#38598b' isLoading={props.isSubmitting} type="submit">
+            Incarca teste
+          </Button>
+         <Button mt={6} color="white" background='#38598b' onClick={()=>adaugaRezultate(fullData)}>Adaugă pacient</Button> 
+         </Wrap>
         </Form>
+        </WrapIntreg>
               )}
               </Formik>
               </ChakraProvider>
-              </Box>
-             
+              {/* </Box> */}
+              </ContinerParinte>
   
             )
        

@@ -23,6 +23,7 @@ color:  #385170;
 const Paragraf=styled.p`
 width: 100%; 
 font-size: 25px;
+font-style: italic;
 `
 const ContinerParinte=styled.div`
 width: 100%;

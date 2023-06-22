@@ -329,7 +329,7 @@ const Dashboard = () => {
         <TitluCard>Analize Frecvente</TitluCard>
         <WrapGeneral>
           <CentruCard>
-           <div style={{color:'#e4f1fe'}}>{nrAnalize}</div> 
+           <div style={{color:'#e4f1fe'}}>II</div> 
           </CentruCard>
         </WrapGeneral>
         <LineChart1/>
@@ -344,8 +344,9 @@ const Dashboard = () => {
      
         </Wrap>
         <br/>
-      <Wrap2 >
         <Titlu>Ne poți găsi in următoarea locație:</Titlu>
+      <Wrap2 >
+      
      <AspectRatio ratio={4 / 2}>
      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2688.2273867474723!2d26.242391060415684!3d47.64114797196079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4734fc2c901e307d%3A0x805d8c8e5187360a!2sUniversitatea%20%E2%80%9E%C8%98tefan%20cel%20Mare%E2%80%9D%20din%20Suceava!5e0!3m2!1sro!2sro!4v1687300546582!5m2!1sro!2sro" style={{width:'600', height:'450', allowfullscreen:"", loading:"lazy", referrerpolicy:"no-referrer-when-downgrade"}}  ></iframe>
   </AspectRatio>

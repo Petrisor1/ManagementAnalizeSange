@@ -32,7 +32,7 @@ color:  #385170;
 `
 const Paragraf=styles.p`
 width: 100%; 
-font-size: 25px;
+font-size: 20px;
 `
 
 const Wrapper = styles.div`
@@ -348,7 +348,7 @@ const vsh=[];
     <Wrapper>
       <Titlu>Analizele medicale</Titlu>
      <br/>
-      <Paragraf>Efectuați click pe una dintre analize pentru a vizualiza rezultatele analizelor</Paragraf>
+      <Paragraf>Vizualizaera rezultatelor buletinelor de analize</Paragraf>
       <br/>
       <ChakraProvider>
         <TableContainer>
